@@ -1,0 +1,4 @@
+'use client';
+import Link from 'next/link';
+import {useState} from 'react';
+export default function Header(){const [open,setOpen]=useState(false);return <header className="header"><Link href="/" className="brand">re:project</Link><nav className="nav"><a href="/#services">Услуги</a><a href="/projects">Архитектура</a><a href="/education">Для дизайнеров</a><a href="/#about">О проекте</a><Link href="/account" className="outline">Личный кабинет</Link></nav><button className="burger" onClick={()=>setOpen(!open)} aria-label="Меню"><i/><i/></button>{open&&<div className="mobileNav"><a href="/#services" onClick={()=>setOpen(false)}>Услуги</a><a href="/projects" onClick={()=>setOpen(false)}>Архитектура</a><a href="/education" onClick={()=>setOpen(false)}>Для дизайнеров</a><a href="/#about" onClick={()=>setOpen(false)}>О проекте</a><Link href="/account">Личный кабинет</Link></div>}</header>}

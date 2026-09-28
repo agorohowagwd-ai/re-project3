@@ -1,0 +1,1 @@
+export default function RoomVisual({kind}:{kind:string}){return <div className={'room '+kind}><div className="rwall"/><div className="rfloor"/><div className="rwindow"/><div className="rsofa"/><div className="rtable"/><div className="rlamp"/><span>{kind==='visual'?'AI VISUAL':kind.toUpperCase()}</span></div>}
