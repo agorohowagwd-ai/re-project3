@@ -4,7 +4,7 @@ import path from 'path';
 import {requireUser} from '@/lib/supabase-server';
 import {getEducationOffer} from '@/lib/education';
 
-const mime:Record<string,string>={docx:'application/vnd.openxmlformats-officedocument.wordprocessingml.document',xlsx:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',pdf:'application/pdf',pdf:'application/pdf'};
+const mime:Record<string,string>={docx:'application/vnd.openxmlformats-officedocument.wordprocessingml.document',xlsx:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',pdf:'application/pdf'};
 export const runtime='nodejs';
 
 export async function GET(request:NextRequest){
