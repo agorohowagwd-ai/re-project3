@@ -50,7 +50,7 @@ export default function Register(){
       {error&&<div className="formError">{error}</div>}
       <button className="dark" disabled={loading}>{loading?'Отправляем…':'Получить код ↗'}</button>
     </form> : <form onSubmit={verifyCode}>
-      <label>КОД ИЗ ПИСЬМА<input value={code} onChange={e=>setCode(e.target.value.replace(/\D/g,'').slice(0,6))} inputMode="numeric" autoComplete="one-time-code" pattern="[0-9]{6}" required placeholder="000000"/></label>
+      <label>КОД ИЗ ПИСЬМА<input value={code} onChange={e=>setCode(e.target.value.replace(/\D/g,'').slice(0,8))} inputMode="numeric" autoComplete="one-time-code" pattern="[0-9]{8}" required placeholder="00000000"/></label>
       <p>Код отправлен на <strong>{email}</strong>.</p>
       {error&&<div className="formError">{error}</div>}
       <button className="dark" disabled={loading}>{loading?'Проверяем…':'Создать аккаунт ↗'}</button>
