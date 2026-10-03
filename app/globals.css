@@ -104,3 +104,52 @@
 .cTable th,.cTable td{border:1px solid #999;padding:6px 8px;text-align:left;vertical-align:top}
 .cTable th{background:#eee}
 @media(max-width:700px){.contractPaper{padding:28px 18px}.contractPaper p{font-size:14px}.contractPaper .cDate{flex-direction:column;gap:2px}}
+
+
+/* v26 — readability, responsive safety, education focus */
+.heroActions{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.heroActions .outline{width:max-content}
+.sectionHead>div{min-width:0}
+.sectionHead>p{flex:0 1 340px;margin:0;min-width:220px}
+.aboutGrid>div{min-width:0}
+.authorTeam{flex-wrap:wrap;align-items:flex-start;gap:12px 25px}
+.authorTeam b{flex:0 0 auto}
+.authorTeam span{flex:1 1 260px;min-width:0;line-height:1.5}
+footer b{font-size:16px}
+footer p,footer a{display:block;color:#777;font-size:13px;line-height:1.8}
+footer small{font-size:10px;color:#666;letter-spacing:.16em}
+footer a:hover{color:#c99da5}
+footer .copy{grid-column:1/-1;border-top:1px solid #333;padding-top:20px!important}
+.educationHeroMeta{flex-wrap:wrap}
+.educationHeroMeta span{min-width:0}
+.educationTwo>div,.educationCatalog>div,.educationBundles>div{min-width:0}
+.educationCardTop,.educationCardBottom{flex-wrap:wrap}
+.educationCardTop span{white-space:nowrap}
+.educationCard h3,.educationCard p,.bundleCard h3,.bundleCard p{overflow-wrap:anywhere}
+.bundleCard .dark{max-width:100%;white-space:normal;text-align:left}
+.educationProductMeta{flex-wrap:wrap}
+.paymentTop>div{min-width:0}
+.paymentTop .dark{flex-shrink:0}
+.paymentQr>div{min-width:0}
+.manualPay .payRow{flex-wrap:wrap}
+@media(max-width:1000px){
+  .sectionHead{align-items:flex-start}
+  .sectionHead>p{flex-basis:300px}
+}
+@media(max-width:800px){
+  .heroActions{align-items:stretch;flex-direction:column}
+  .heroActions .dark,.heroActions .outline{width:100%}
+  .sectionHead>p{min-width:0}
+  .authorTeam{display:grid;grid-template-columns:1fr;gap:10px}
+  .authorTeam span{min-width:0}
+  footer{grid-template-columns:1fr;padding:50px 7vw 25px}
+}
+@media(max-width:600px){
+  .educationHero h1{font-size:clamp(48px,13vw,64px)}
+  .educationCard,.bundleCard{padding:25px}
+  .educationCard h3{font-size:27px;margin-top:32px}
+  .educationCardBottom{gap:12px}
+  .educationCardBottom b{max-width:100%}
+  .educationHeroMeta{font-size:9px;line-height:1.5}
+  .paymentTop .dark{width:100%}
+}
