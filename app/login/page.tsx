@@ -1,11 +1,11 @@
 'use client';
 
-import { useState } from 'react';
+import { Suspense, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { getSupabaseBrowser } from '@/lib/supabase-browser';
 
-export default function Login(){
+function LoginContent(){
   const [email,setEmail]=useState('');
   const [code,setCode]=useState('');
   const [sent,setSent]=useState(false);
@@ -63,4 +63,7 @@ export default function Login(){
     </form>}
     <p>Нет аккаунта? <Link href="/register">Зарегистрироваться</Link></p>
   </div></main>
+}
+export default function Login(){
+  return <Suspense fallback={<main className="auth"><div className="authBox"><p>Загрузка…</p></div></main>}><LoginContent/></Suspense>;
 }
