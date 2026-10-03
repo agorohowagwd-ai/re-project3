@@ -5,7 +5,12 @@ export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 export async function GET(request: NextRequest) {
   try {
-    const { supabase, user } = await requireUser(request); const role = await requireStaff(supabase, user.id); const admin = getSupabaseAdmin();
+    const { user } = await requireUser(request);
+    const admin = getSupabaseAdmin();
+    const { data: staffProfile, error: staffProfileError } = await admin.from('profiles').select('role').eq('id', user.id).maybeSingle();
+    if (staffProfileError) throw staffProfileError;
+    const role = staffProfile?.role;
+    if (role !== 'admin' && role !== 'designer') throw new Error('FORBIDDEN');
     const [{data:authUsers,error:authUsersError}, profiles, requests, payments, visuals, messages, educationAccess] = await Promise.all([admin.auth.admin.listUsers({page:1,perPage:1000}),
       admin.from('profiles').select('id,name,role,created_at').order('created_at',{ascending:false}),
       admin.from('requests').select('id,user_id,service_id,service_title,price,status,name,email,phone,message,payload,created_at').order('created_at',{ascending:false}),
