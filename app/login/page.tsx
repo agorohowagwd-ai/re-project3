@@ -41,7 +41,8 @@ function LoginContent(){
       const profile=await fetch('/api/account',{headers:{Authorization:`Bearer ${sessionData.session?.access_token||''}`}});
       const profileJson=profile.ok?await profile.json():null;
       const next=searchParams.get('next');
-      router.push(next || (profileJson?.role==='admin'||profileJson?.role==='designer'?'/admin':'/account'));
+      const destination = profileJson?.role==='admin'||profileJson?.role==='designer' ? '/admin' : (next || '/account');
+      router.push(destination);
     }catch(e){
       setError(e instanceof Error ? e.message : 'Неверный или просроченный код.');
     }finally{setLoading(false)}
