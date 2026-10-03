@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { requireUser, getSupabaseAdmin } from '@/lib/supabase-server';
 import { requireStaff } from '@/lib/auth-role';
 export const runtime = 'nodejs';
+export const dynamic = 'force-dynamic';
 export async function GET(request: NextRequest) {
   try {
     const { supabase, user } = await requireUser(request); const role = await requireStaff(supabase, user.id); const admin = getSupabaseAdmin();
