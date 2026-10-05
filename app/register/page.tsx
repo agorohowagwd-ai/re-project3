@@ -48,12 +48,12 @@ export default function Register(){
       <label>ИМЯ<input value={name} onChange={e=>setName(e.target.value)} required placeholder="Ваше имя"/></label>
       <label>E-MAIL<input value={email} onChange={e=>setEmail(e.target.value)} type="email" required placeholder="you@example.com"/></label>
       {error&&<div className="formError">{error}</div>}
-      <button className="dark" disabled={loading}>{loading?'Отправляем…':'Получить код ↗'}</button>
+      <button className="dark" disabled={loading}>{loading?'Отправляем…':'Получить код '}</button>
     </form> : <form onSubmit={verifyCode}>
       <label>КОД ИЗ ПИСЬМА<input value={code} onChange={e=>setCode(e.target.value.replace(/\D/g,'').slice(0,8))} inputMode="numeric" autoComplete="one-time-code" pattern="[0-9]{8}" required placeholder="00000000"/></label>
       <p>Код отправлен на <strong>{email}</strong>.</p>
       {error&&<div className="formError">{error}</div>}
-      <button className="dark" disabled={loading}>{loading?'Проверяем…':'Создать аккаунт ↗'}</button>
+      <button className="dark" disabled={loading}>{loading?'Проверяем…':'Создать аккаунт '}</button>
       <button type="button" className="textButton" onClick={()=>{setSent(false);setCode('');setError('')}}>Изменить e-mail</button>
     </form>}
     {!sent&&<p>Уже зарегистрированы? <Link href="/login">Войти</Link></p>}
