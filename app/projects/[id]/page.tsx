@@ -67,7 +67,7 @@ export default function ProjectPage({ params }: { params: { id: string } }) {
               <div className="detailCallout"><b>Полный цикл</b><span>{architectureOffer.supervision}</span></div>
               <div className="detailCallout"><b>Правки</b><span>{architectureOffer.revisions}.</span></div>
               <div className="detailCallout"><b>Реализация</b><span>{architectureOffer.team}</span></div>
-              <Link href="/projects/request" className="dark">Обсудить проект <span className="arrowIcon">↗</span></Link>
+              <Link href="/projects/request" className="dark">Обсудить проект <span className="arrowIcon"></span></Link>
             </div>
           </div>
         </section>
