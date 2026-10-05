@@ -15,9 +15,13 @@ export async function GET(request:NextRequest){
   if(!slug||!file)return NextResponse.json({error:'Не указан материал.'},{status:400});
   const offer=getEducationOffer(slug);
   if(!offer||!offer.files.includes(file))return NextResponse.json({error:'Файл не найден.'},{status:404});
-  const accessSlugs = slug;
-  const {data:access}=await supabase.from('education_access').select('id').eq('user_id',user.id).eq('product_slug',accessSlugs).maybeSingle();
-  if(!access)return NextResponse.json({error:'Сначала оплатите материал.'},{status:403});
+  const {data:profile}=await supabase.from('profiles').select('role').eq('id',user.id).maybeSingle();
+  const isAdmin=profile?.role==='admin';
+  if(!isAdmin){
+   const accessSlugs = slug;
+   const {data:access}=await supabase.from('education_access').select('id').eq('user_id',user.id).eq('product_slug',accessSlugs).maybeSingle();
+   if(!access)return NextResponse.json({error:'Сначала оплатите материал.'},{status:403});
+  }
   const safe=path.basename(file);
   const ext=path.extname(safe).slice(1).toLowerCase();
   if(!mime[ext])return NextResponse.json({error:'Недопустимый тип файла.'},{status:400});
