@@ -22,5 +22,5 @@ export default function DownloadButton({ product, file }: { product: string; fil
     } catch (e) { setError(e instanceof Error ? e.message : 'Не удалось скачать файл.'); }
     finally { setBusy(false); }
   }
-  return <div className="downloadItem"><button type="button" className="downloadBtn" onClick={download} disabled={busy}>{busy ? 'Загружаем…' : `${file} ↓`}</button>{error && <div className="formError">{error}</div>}</div>;
+  return <div className="downloadItem"><button type="button" className="downloadBtn" onClick={download} disabled={busy}>{busy ? 'Загружаем…' : `${file}`}</button>{error && <div className="formError">{error}</div>}</div>;
 }
