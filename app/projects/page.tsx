@@ -39,7 +39,7 @@ export default function ProjectsPage() {
                     <h3>{project.title}</h3>
                     <p>{project.description}</p>
                     {project.area !== '—' && <div className="projectStats"><span>{project.area}</span><span>{project.floors}</span><span>{project.bedrooms}</span></div>}
-                    <div className="projectOpen">Смотреть проект <b><span className="arrowIcon">↗</span></b></div>
+                    <div className="projectOpen">Смотреть проект <b><span className="arrowIcon"></span></b></div>
                   </div>
                 </Link>
               ))}
@@ -65,7 +65,7 @@ export default function ProjectsPage() {
                 <div><b>Полный цикл</b><span>вовлеченность на всех этапах + авторский надзор</span></div>
                 <div><b>Проверенные</b><span>бригады и поставщики</span></div>
               </div>
-              <Link href="/projects/request" className="dark">Обсудить проект <span className="arrowIcon">↗</span></Link>
+              <Link href="/projects/request" className="dark">Обсудить проект <span className="arrowIcon"></span></Link>
             </div>
           </div>
         </section>
