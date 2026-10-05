@@ -14,7 +14,7 @@ export default function ProjectPage({ params }: { params: { id: string } }) {
       <main>
         <section className="projectDetailHero">
           <div className="projectDetailText">
-            <Link href="/projects" className="back">← Все типовые проекты</Link>
+            <Link href="/projects" className="back"><span className="arrowIcon">←</span> Все типовые проекты</Link>
             <div className="eyebrow">{project.number} / {project.typeLabel || 'ТИПОВОЙ ПРОЕКТ'}</div>
             <h1>{project.title}</h1>
             <p>{project.description}</p>
@@ -67,7 +67,7 @@ export default function ProjectPage({ params }: { params: { id: string } }) {
               <div className="detailCallout"><b>Полный цикл</b><span>{architectureOffer.supervision}</span></div>
               <div className="detailCallout"><b>Правки</b><span>{architectureOffer.revisions}.</span></div>
               <div className="detailCallout"><b>Реализация</b><span>{architectureOffer.team}</span></div>
-              <Link href="/projects/request" className="dark">Обсудить проект ↗</Link>
+              <Link href="/projects/request" className="dark">Обсудить проект <span className="arrowIcon">↗</span></Link>
             </div>
           </div>
         </section>
