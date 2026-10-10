@@ -305,3 +305,71 @@ footer a:hover{background-size:100% 1px;color:var(--burg)}
   .motionReady .rv{opacity:1;transform:none;clip-path:none}
   html{scroll-behavior:auto}
 }
+
+/* =====================================================================
+   v26 · EDUCATION MOTION
+   Карточки — стопка файлов, наборы — складываются и считают выгоду,
+   манифест — зачёркивается.
+   ===================================================================== */
+
+/* --- карточка кейса: стопка файлов --- */
+.educationCard{position:relative;overflow:hidden;transition:background .45s var(--ease),color .3s ease!important}
+.educationCard h3,.educationCard p{position:relative;z-index:1}
+.fileStack{position:absolute;right:32px;top:62px;width:74px;height:96px;pointer-events:none}
+.fileSheet{position:absolute;inset:0;background:#fff;border:1px solid #d5d5cf;padding:10px 9px;display:flex;flex-direction:column;gap:5px;transform-origin:50% 100%;transition:transform .8s var(--ease),border-color .4s ease,box-shadow .5s ease}
+.fileSheet i{display:block;height:2px;background:#d9d9d3}
+.fileSheet i:nth-child(1){width:60%;background:var(--burg);opacity:.55}
+.fileSheet i:nth-child(3){width:85%}
+.fileSheet i:nth-child(5){width:45%}
+.fileSheet em{margin-top:auto;font-style:normal;font-size:8px;letter-spacing:.14em;color:#999}
+.fileGrid{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid #d9d9d3;border-left:1px solid #d9d9d3}
+.fileGrid span{height:9px;border-right:1px solid #d9d9d3;border-bottom:1px solid #d9d9d3}
+.fileGrid span:nth-child(6),.fileGrid span:nth-child(11){background:rgba(100,31,44,.28)}
+.fs3{transform:translate(4px,4px)}
+.fs2{transform:translate(2px,2px)}
+.fs1{z-index:3}.fs2{z-index:2}.fs3{z-index:1}
+.educationCard:hover .fs1{transform:translate(-30px,-6px) rotate(-11deg)}
+.educationCard:hover .fs2{transform:translate(26px,-4px) rotate(9deg)}
+.educationCard:hover .fs3{transform:translate(0,-16px) rotate(-1deg)}
+.educationCard:hover .fileSheet{border-color:#fff;box-shadow:0 14px 30px -14px rgba(0,0,0,.6)}
+@media(hover:none){
+  .educationCard.rvIn .fs1{transform:translate(-22px,-4px) rotate(-8deg);transition-delay:.5s}
+  .educationCard.rvIn .fs2{transform:translate(20px,-2px) rotate(7deg);transition-delay:.6s}
+}
+@media(max-width:800px){.fileStack{right:22px;top:52px;width:58px;height:76px}.fileSheet{padding:8px 7px;gap:4px}.fileGrid span{height:6px}}
+.educationCard h3{max-width:calc(100% - 120px);min-height:2.1em}
+@media(max-width:800px){.educationCard h3{max-width:calc(100% - 90px)}}
+
+/* --- наборы: кейсы складываются, считается выгода --- */
+.bundleCard{position:relative;transition:transform .6s var(--ease)}
+.bundleItems span{display:flex;justify-content:space-between;align-items:baseline;gap:14px}
+.bundleItems span b{font-weight:400}
+.bundleItems span s{color:#aaa;white-space:nowrap;font-size:11px}
+.motionReady .bundleCard.rv .bundleItems span{opacity:0;transform:translateX(-36px);transition:opacity .6s var(--ease),transform .8s var(--ease);transition-delay:calc(.35s + var(--i,0) * .12s)}
+.motionReady .bundleCard.rvIn .bundleItems span{opacity:1;transform:none}
+.bundlePrice{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px;margin:0 0 25px}
+.bundleOld{font-size:16px;color:#999;text-decoration:none;position:relative}
+.bundleOld::after{content:"";position:absolute;left:-2px;right:-2px;top:52%;height:1px;background:var(--burg);transform:scaleX(1);transform-origin:0 50%;transition:transform .7s var(--easeIO) 1.25s}
+.bundleNew{font-size:28px}
+.bundleSave{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--burg);border:1px solid var(--burg);padding:6px 9px;align-self:center;transition:opacity .6s ease 1.6s,transform .7s var(--ease) 1.6s}
+.motionReady .bundleCard.rv .bundleOld{opacity:0;transition:opacity .5s ease 1s}
+.motionReady .bundleCard.rv .bundleOld::after{transform:scaleX(0)}
+.motionReady .bundleCard.rv .bundleSave{opacity:0;transform:translateY(8px)}
+.motionReady .bundleCard.rvIn .bundleOld{opacity:1}
+.motionReady .bundleCard.rvIn .bundleOld::after{transform:scaleX(1)}
+.motionReady .bundleCard.rvIn .bundleSave{opacity:1;transform:none}
+.bundleCard:hover .bundleSave{background:var(--burg);color:#fff}
+
+/* --- шаги 01-02-03 --- */
+.educationSteps>div b{transition:color .6s ease}
+.motionReady .educationSteps>div.rvIn b{color:var(--burg)}
+
+/* --- манифест: зачёркивание --- */
+.educationManifesto .strike{color:#8a8a85;background:linear-gradient(#c24a64,#c24a64) no-repeat 0 58%/100% max(2px,.055em);-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.motionReady .educationManifesto h2.rv .strike{color:#fff;background-size:0% max(2px,.055em);transition:background-size 1.1s var(--easeIO) .7s,color .9s ease .9s}
+.motionReady .educationManifesto h2.rv em{display:inline-block;opacity:0;transform:translateY(.35em);transition:opacity .9s ease 1.6s,transform 1.1s var(--ease) 1.6s}
+.motionReady .educationManifesto h2.rvIn .strike{color:#8a8a85;background-size:100% max(2px,.055em)}
+.motionReady .educationManifesto h2.rvIn em{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.educationManifesto .strike{background-size:100% max(2px,.055em)!important}}
+@media(max-width:800px){.educationManifesto h2{font-size:clamp(32px,9.6vw,60px)}}
+@media(hover:none) and (max-width:800px){.educationCard.rvIn .fs1{transform:translate(-14px,-3px) rotate(-7deg)}.educationCard.rvIn .fs2{transform:translate(8px,-2px) rotate(6deg)}.fileStack{right:28px}}
