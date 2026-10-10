@@ -26,6 +26,10 @@ const REVEAL = [
   'main section .choiceButton',
   'main section .serviceCard',
   'main section .architectureCard',
+  'main section .projectCard',
+  'main section .detailMedia',
+  'main section .detailPlanImage',
+  'main section .stagesLabel',
   'main section .educationCard',
   'main section .bundleCard',
   'main section .educationSteps > div',
@@ -46,7 +50,7 @@ export default function Motion() {
 
     /* ---------- reveal on scroll ---------- */
     const targets = Array.from(document.querySelectorAll<HTMLElement>(REVEAL)).filter(
-      (el) => !el.closest('.hero') && !el.classList.contains('rv'),
+      (el) => !el.closest('.hero') && !el.closest('.projectsHero') && !el.closest('.projectDetailHero') && !el.classList.contains('rv'),
     );
     let io: IntersectionObserver | null = null;
     if (!reduce && 'IntersectionObserver' in window) {
