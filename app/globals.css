@@ -373,3 +373,82 @@ footer a:hover{background-size:100% 1px;color:var(--burg)}
 @media(prefers-reduced-motion:reduce){.educationManifesto .strike{background-size:100% max(2px,.055em)!important}}
 @media(max-width:800px){.educationManifesto h2{font-size:clamp(32px,9.6vw,60px)}}
 @media(hover:none) and (max-width:800px){.educationCard.rvIn .fs1{transform:translate(-14px,-3px) rotate(-7deg)}.educationCard.rvIn .fs2{transform:translate(8px,-2px) rotate(6deg)}.fileStack{right:28px}}
+
+/* =====================================================================
+   v27 · ARCHITECTURE MOTION
+   Типовые проекты: заголовок по строкам, цифры, мягкий зум рендеров,
+   разделы проекта закрашиваются, план печатается, конструктор сценариев.
+   ===================================================================== */
+
+/* --- hero «Архитектура» и страницы проекта --- */
+.projectsHero>.eyebrow{animation:fadeUp 1s var(--ease) .05s both}
+.projectsHero>p{animation:fadeUp 1.1s var(--ease) .45s both}
+.projectsProof{margin-top:44px;grid-template-columns:repeat(3,minmax(0,max-content));animation:fadeUp 1.1s var(--ease) .65s both}
+.projectsProof .proofItem b span{font:inherit}
+@media(max-width:1000px){.projectsProof{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:600px){.projectsProof{grid-template-columns:minmax(0,1fr)}.projectsProof .proofItem{padding:4px 0 4px 14px}}
+.projectDetailHero{overflow:hidden}
+.projectDetailText>.back,.projectDetailText>.eyebrow{animation:fadeUp 1s var(--ease) .05s both}
+.projectDetailText>p,.projectDetailText>.projectProof{animation:fadeUp 1.1s var(--ease) .4s both}
+.projectDetailText>.detailPrice,.projectDetailText>.detailSpecs{animation:fadeUp 1.1s var(--ease) .6s both}
+.detailProjectImage{animation:imgSettle 2s var(--ease) both}
+@keyframes imgSettle{from{transform:scale(1.08)}to{transform:none}}
+
+/* --- карточки проектов: зум рендера при появлении и наведении --- */
+.projectCard{position:relative;overflow:hidden}
+.projectCard .projectImage{transition:transform 1.4s var(--ease),filter .8s ease;filter:saturate(.9)}
+.motionReady .projectCard.rv .projectImage{transform:scale(1.08)}
+.motionReady .projectCard.rvIn .projectImage{transform:none;transition:transform 1.8s var(--ease) .1s,filter .8s ease}
+.projectCard:hover .projectImage,.motionReady .projectCard.rvIn:hover .projectImage{transform:scale(1.05);filter:saturate(1.05)}
+.projectCard:hover .cardHover{opacity:1;transform:none}
+.projectCardBody h3{transition:transform .6s var(--ease)}
+.projectCard:hover .projectCardBody h3{transform:translateX(8px)}
+
+/* --- визуалы на странице проекта --- */
+.detailVisuals>div{overflow:hidden}
+.motionReady .detailMedia.rv{opacity:1;transform:scale(1.08)}
+.motionReady .detailMedia.rvIn{transform:none;transition:transform 1.8s var(--ease)}
+.motionReady .detailPlanImage.rv{opacity:1;transform:none;clip-path:inset(0 0 100% 0);transition:clip-path 2.4s var(--easeIO)}
+.motionReady .detailPlanImage.rvIn{clip-path:inset(0 0 0 0)}
+
+/* --- разделы проекта: закрашиваются по очереди --- */
+.scopeStages{margin:0 0 42px}
+.stages{display:flex;flex-direction:column}
+.stage{border-top:1px solid var(--line)}
+.stageRow{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:17px 0}
+.stageRow span{font-size:20px;letter-spacing:-.03em}
+.stageRow span::first-letter{text-transform:uppercase}
+.stageRow b{font-weight:400;font-size:11px;color:#aaa;transition:color .5s ease calc(var(--i,0) * .45s)}
+.stageBar{height:2px;background:var(--burg);transform:scaleX(0);transform-origin:0 50%;transition:transform .9s var(--ease) calc(var(--i,0) * .45s)}
+.stages.isOn .stageBar{transform:scaleX(1)}
+.stages.isOn .stageRow b{color:var(--burg)}
+.stagesLabel{margin-top:18px;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--burg);font-variant-numeric:tabular-nums}
+@media(max-width:800px){.stageRow span{font-size:17px}}
+
+/* --- конструктор re:project 1 --- */
+.constructorHead{align-items:end;margin-bottom:40px}
+.constructorHead .detailLead{margin:0}
+.planToggle{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.planToggle button{min-height:44px;padding:13px 18px;border:1px solid var(--ink);background:transparent;color:var(--ink);font-size:13px;cursor:pointer;transition:background .35s ease,color .35s ease,border-color .35s ease}
+.planToggle button:hover{border-color:var(--burg);color:var(--burg)}
+.planToggle button.isActive{background:var(--burg);border-color:var(--burg);color:#fff}
+.planToggle button:focus-visible{outline:2px solid var(--burg);outline-offset:2px}
+.planPlot{position:relative;overflow:hidden;background:#fff;border:1px solid var(--line)}
+.planPlot img{display:block;width:100%;height:auto;clip-path:inset(0 0 100% 0);transition:clip-path 2.6s var(--easeIO)}
+.planPlot.isPrinted img{clip-path:inset(0 0 0 0)}
+.planHead{position:absolute;left:0;right:0;top:0;height:2px;background:var(--burg);opacity:0}
+.planPlot.isPrinted .planHead{animation:planHead 2.6s var(--easeIO) forwards}
+@keyframes planHead{0%{top:0;opacity:1}98%{top:100%;opacity:1}100%{top:100%;opacity:0}}
+.planZone{position:absolute;left:21.8%;top:25.6%;width:10.9%;height:38.5%}
+.planZoneMark{border:2px solid var(--burg);background:rgba(100,31,44,.06);transition:opacity .5s ease;animation:zonePulse 2.4s ease-in-out infinite}
+.planZoneMark.isOff{opacity:0}
+@keyframes zonePulse{0%,100%{background:rgba(100,31,44,.04)}50%{background:rgba(100,31,44,.15)}}
+.planKids{display:flex;flex-direction:column;background:#efece6;clip-path:inset(0 0 100% 0);transition:clip-path .9s var(--easeIO)}
+.planKids.isOn{clip-path:inset(0 0 0 0)}
+.planKids>div{flex:1;display:flex;align-items:center;justify-content:center}
+.planKids>div:first-child{border-bottom:5px solid #2b2a28}
+.planKids span{font-size:10px;letter-spacing:.08em;color:#3a3a38}
+.planNotes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 40px;margin-top:24px}
+.planNotes .detailCallout{margin-bottom:0}
+@media(max-width:800px){.planNotes{grid-template-columns:1fr}.planKids span{font-size:6px;letter-spacing:.02em}.planKids>div:first-child{border-bottom-width:3px}}
+@media(prefers-reduced-motion:reduce){.planPlot img,.motionReady .detailPlanImage.rv{clip-path:none!important}.planKids{transition:none}}

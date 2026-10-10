@@ -2,6 +2,7 @@ import Header from '@/components/Header';
 import HouseVisual from '@/components/HouseVisual';
 import Link from 'next/link';
 import { architectureOffer, architectureProjects } from '@/lib/projects';
+import ScopeStages from '@/components/ScopeStages';
 
 export default function ProjectsPage() {
   return (
@@ -10,9 +11,13 @@ export default function ProjectsPage() {
       <main>
         <section className="projectsHero">
           <div className="eyebrow">ARCHITECTURE / READY PROJECTS</div>
-          <h1>Дом от идеи<br /><em>до готового интерьера.</em></h1>
+          <h1 className="heroTitle"><span className="ln"><span>Дом от идеи</span></span><span className="ln"><span><em>до готового интерьера.</em></span></span></h1>
           <p>{architectureOffer.scope} Мы работаем с проверенными бригадами и поставщиками и сопровождаем проект на всех этапах реализации.</p>
-          <div className="architecturePrice"><span>СТОИМОСТЬ ТИПОВОГО ПРОЕКТА</span><strong>{architectureOffer.price}</strong></div>
+          <div className="heroProof projectsProof">
+            <div className="proofItem"><b>{architectureOffer.price}</b><span>стоимость<br />типового проекта</span></div>
+            <div className="proofItem"><b><span data-count="5">5</span>+</b><span>домов построено<br />по re:project 1</span></div>
+            <div className="proofItem"><b><span data-count="5">5</span> правок</b><span>на всех этапах<br />проектирования</span></div>
+          </div>
         </section>
 
         <section className="projectsSection">
@@ -34,6 +39,7 @@ export default function ProjectsPage() {
                   ) : (
                     <HouseVisual variant={project.accent} />
                   )}
+                  <span className="cardHover">Смотреть проект <span className="arrowIcon"></span></span>
                   <div className="projectCardBody">
                     <div className="projectMeta"><span>{project.number}</span><span>{project.typeLabel || 'ТИПОВОЙ ПРОЕКТ'}</span></div>
                     <h3>{project.title}</h3>
@@ -56,9 +62,7 @@ export default function ProjectsPage() {
             </div>
             <div className="offerDetails">
               <p className="offerLead">Готовый проект от 0 до чистовой отделки с готовым интерьером.</p>
-              <ul className="offerList">
-                {architectureOffer.sections.map((item) => <li key={item}>{item}</li>)}
-              </ul>
+              <ScopeStages items={architectureOffer.sections} />
               <div className="offerRows">
                 <div><b>200 000 ₽</b><span>стоимость типового проекта</span></div>
                 <div><b>5 правок</b><span>на всех этапах проектирования</span></div>
@@ -74,6 +78,7 @@ export default function ProjectsPage() {
           <div className="eyebrow">ADAPTIVE ARCHITECTURE</div>
           <h2>Один фасад.<br /><em>Разные сценарии жизни.</em></h2>
           <p>Планировка может конструктивно меняться под задачу семьи: например, дополнительная зона сауны и парной может быть заменена на детские комнаты или другие функциональные помещения. При этом внешний облик дома остаётся цельным и органичным.</p>
+          <Link href="/projects/re-project-1#constructor" className="outline">Открыть конструктор re:project 1 <span className="arrowIcon"></span></Link>
         </section>
       </main>
     </>
