@@ -78,7 +78,6 @@ export default function ProjectsPage() {
           <div className="eyebrow">ADAPTIVE ARCHITECTURE</div>
           <h2>Один фасад.<br /><em>Разные сценарии жизни.</em></h2>
           <p>Планировка может конструктивно меняться под задачу семьи: например, дополнительная зона сауны и парной может быть заменена на детские комнаты или другие функциональные помещения. При этом внешний облик дома остаётся цельным и органичным.</p>
-          <Link href="/projects/re-project-1#constructor" className="outline">Открыть конструктор re:project 1 <span className="arrowIcon"></span></Link>
         </section>
       </main>
     </>

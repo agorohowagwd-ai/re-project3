@@ -4,7 +4,6 @@ import PlanVisual from '@/components/PlanVisual';
 import Link from 'next/link';
 import { architectureOffer, getArchitectureProject } from '@/lib/projects';
 import ScopeStages from '@/components/ScopeStages';
-import PlanConstructor from '@/components/PlanConstructor';
 
 export default function ProjectPage({ params }: { params: { id: string } }) {
   const project = getArchitectureProject(params.id);
@@ -39,24 +38,10 @@ export default function ProjectPage({ params }: { params: { id: string } }) {
           </div>
         </section>
 
-        {project.id === 're-project-1' && project.plan && (
-          <section id="constructor" className="detailBody detailScope">
-            <div className="sectionTag">02 / CONSTRUCTOR</div>
-            <div>
-              <div className="detailContent constructorHead">
-                <div>
-                  <div className="eyebrow">АРХИТЕКТУРА-КОНСТРУКТОР</div>
-                  <h2>Меняется<br /><em>сценарий.</em></h2>
-                </div>
-                <p className="detailLead">Это не жёсткая планировка, а архитектурная система, которую можно собирать под конкретную семью. Выберите сценарий — фасад останется тем же.</p>
-              </div>
-              <PlanConstructor plan={project.plan} alt={`${project.title} — планировка`} />
-            </div>
-          </section>
-        )}
+        
 
         <section className="detailBody detailScope">
-          <div className="sectionTag">{project.id === 're-project-1' ? '03' : '02'} / SCOPE</div>
+          <div className="sectionTag">02 / SCOPE</div>
           <div className="detailContent">
             <div>
               <div className="eyebrow">СОСТАВ ПРОЕКТА</div>

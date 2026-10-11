@@ -408,8 +408,6 @@ footer a:hover{background-size:100% 1px;color:var(--burg)}
 .detailVisuals>div{overflow:hidden}
 .motionReady .detailMedia.rv{opacity:1;transform:scale(1.08)}
 .motionReady .detailMedia.rvIn{transform:none;transition:transform 1.8s var(--ease)}
-.motionReady .detailPlanImage.rv{opacity:1;transform:none;clip-path:inset(0 0 100% 0);transition:clip-path 2.4s var(--easeIO)}
-.motionReady .detailPlanImage.rvIn{clip-path:inset(0 0 0 0)}
 
 /* --- разделы проекта: закрашиваются по очереди --- */
 .scopeStages{margin:0 0 42px}
@@ -424,31 +422,3 @@ footer a:hover{background-size:100% 1px;color:var(--burg)}
 .stages.isOn .stageRow b{color:var(--burg)}
 .stagesLabel{margin-top:18px;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--burg);font-variant-numeric:tabular-nums}
 @media(max-width:800px){.stageRow span{font-size:17px}}
-
-/* --- конструктор re:project 1 --- */
-.constructorHead{align-items:end;margin-bottom:40px}
-.constructorHead .detailLead{margin:0}
-.planToggle{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
-.planToggle button{min-height:44px;padding:13px 18px;border:1px solid var(--ink);background:transparent;color:var(--ink);font-size:13px;cursor:pointer;transition:background .35s ease,color .35s ease,border-color .35s ease}
-.planToggle button:hover{border-color:var(--burg);color:var(--burg)}
-.planToggle button.isActive{background:var(--burg);border-color:var(--burg);color:#fff}
-.planToggle button:focus-visible{outline:2px solid var(--burg);outline-offset:2px}
-.planPlot{position:relative;overflow:hidden;background:#fff;border:1px solid var(--line)}
-.planPlot img{display:block;width:100%;height:auto;clip-path:inset(0 0 100% 0);transition:clip-path 2.6s var(--easeIO)}
-.planPlot.isPrinted img{clip-path:inset(0 0 0 0)}
-.planHead{position:absolute;left:0;right:0;top:0;height:2px;background:var(--burg);opacity:0}
-.planPlot.isPrinted .planHead{animation:planHead 2.6s var(--easeIO) forwards}
-@keyframes planHead{0%{top:0;opacity:1}98%{top:100%;opacity:1}100%{top:100%;opacity:0}}
-.planZone{position:absolute;left:21.8%;top:25.6%;width:10.9%;height:38.5%}
-.planZoneMark{border:2px solid var(--burg);background:rgba(100,31,44,.06);transition:opacity .5s ease;animation:zonePulse 2.4s ease-in-out infinite}
-.planZoneMark.isOff{opacity:0}
-@keyframes zonePulse{0%,100%{background:rgba(100,31,44,.04)}50%{background:rgba(100,31,44,.15)}}
-.planKids{display:flex;flex-direction:column;background:#efece6;clip-path:inset(0 0 100% 0);transition:clip-path .9s var(--easeIO)}
-.planKids.isOn{clip-path:inset(0 0 0 0)}
-.planKids>div{flex:1;display:flex;align-items:center;justify-content:center}
-.planKids>div:first-child{border-bottom:5px solid #2b2a28}
-.planKids span{font-size:10px;letter-spacing:.08em;color:#3a3a38}
-.planNotes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 40px;margin-top:24px}
-.planNotes .detailCallout{margin-bottom:0}
-@media(max-width:800px){.planNotes{grid-template-columns:1fr}.planKids span{font-size:6px;letter-spacing:.02em}.planKids>div:first-child{border-bottom-width:3px}}
-@media(prefers-reduced-motion:reduce){.planPlot img,.motionReady .detailPlanImage.rv{clip-path:none!important}.planKids{transition:none}}
