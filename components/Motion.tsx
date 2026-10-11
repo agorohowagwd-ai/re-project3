@@ -28,7 +28,6 @@ const REVEAL = [
   'main section .architectureCard',
   'main section .projectCard',
   'main section .detailMedia',
-  'main section .detailPlanImage',
   'main section .stagesLabel',
   'main section .educationCard',
   'main section .bundleCard',
