@@ -8,8 +8,8 @@ export default function FloatingCta() {
   const [show, setShow] = useState(false);
 
   useEffect(() => {
-    const hero = document.querySelector('.hero');
-    const ends = Array.from(document.querySelectorAll('.cta, footer'));
+    const hero = document.querySelector('.hero, .xHero');
+    const ends = Array.from(document.querySelectorAll('.cta, .xCta, footer'));
     let pastHero = false;
     let endVisible = false;
     const update = () => setShow(pastHero && !endVisible);

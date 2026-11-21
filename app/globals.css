@@ -422,3 +422,11 @@ footer a:hover{background-size:100% 1px;color:var(--burg)}
 .stages.isOn .stageRow b{color:var(--burg)}
 .stagesLabel{margin-top:18px;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--burg);font-variant-numeric:tabular-nums}
 @media(max-width:800px){.stageRow span{font-size:17px}}
+
+/* ===== v25: новый визуальный язык (шрифт Manrope, круглые кнопки) для внутренних страниц ===== */
+body{font-family:var(--font-manrope),'Manrope',Arial,Helvetica,sans-serif;letter-spacing:-.01em}
+.hero em,h1 em,h2 em{font-family:inherit;font-style:normal;font-weight:600}
+.dark,.light,.outline{border-radius:999px;font-weight:600;letter-spacing:.02em}
+.serviceCard,.architectureCard,.projectCard,.educationCard,.bundleCard,.authBox,.success,.empty,.wallet{border-radius:22px}
+.architectureCard,.projectCard{overflow:hidden}
+.order input,.order textarea,.order select,.authBox input{border-radius:12px}

@@ -1,23 +1,128 @@
 'use client';
-import Header from '@/components/Header';
 import Link from 'next/link';
+import { useState } from 'react';
 import { services } from '@/lib/services';
-import ServiceCard from '@/components/ServiceCard';
 import { architectureProjects } from '@/lib/projects';
-import HouseVisual from '@/components/HouseVisual';
 import FloatingCta from '@/components/FloatingCta';
+import './home.css';
 
-const marquee = ['Архитектура частных домов', 'Дизайн интерьера', 'AI-визуализация', 'Комплектация', 'Авторский надзор', 'Собственная бригада'];
+const chips = [
+  { label: 'Квартира', href: '/brief/apartment' },
+  { label: 'Дом', href: '/brief/house' },
+  { label: 'Интерьер', href: '/service/design' },
+  { label: 'AI-визуализация', href: '/service/visual' },
+  { label: 'Комплектация', href: '/service/equipment' },
+];
+
+const nav = [
+  { label: 'Услуги', href: '/#services' },
+  { label: 'Архитектура', href: '/projects' },
+  { label: 'Для дизайнеров', href: '/education' },
+  { label: 'О проекте', href: '/#about' },
+];
+
+function Arrow() {
+  return <span className="xArrow" aria-hidden="true"><svg viewBox="0 0 16 16" width="14" height="14"><path d="M4.5 11.5l7-7M5.5 4.5h6v6" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/></svg></span>;
+}
 
 export default function Home() {
-  return <><Header/><main>
-    <section className="hero"><div className="eyebrow">ARCHITECTURE / INTERIOR / AI</div><h1 className="heroTitle"><span className="ln"><span>Переосмыслить</span></span><span className="ln"><span><em>пространство.</em></span></span></h1><p>re:project — авторский сервис архитектора и дизайнера: архитектура, интерьеры и практические инструменты для дизайнеров.</p><div className="heroActions"><Link className="dark" href="/service/visual">Создать визуализацию <span className="arrowIcon"></span></Link><Link className="outline" href="/education">Инструменты для дизайнеров <span className="arrowIcon"></span></Link></div><div className="heroProof"><div className="proofItem"><b><span data-count="8">8</span></b><span>лет практики<br/>с 2018 года</span></div><div className="proofItem"><b><span data-count="5">5</span>+</b><span>домов построено<br/>по re:project 1</span></div><div className="proofItem"><b><span data-count="4">4</span></b><span>формата работы —<br/>от онлайна до проекта</span></div><div className="proofItem"><b>2 000 ₽</b><span>старт работы<br/>над пространством</span></div></div><div className="heroLine"/><a href="#start" className="scrollCue" aria-label="Листать вниз"><span/></a></section>
-    <div className="marquee" aria-hidden="true"><div className="marqueeTrack">{[0,1].map((k)=><div className="marqueeGroup" key={k}>{marquee.map((m)=><span key={m}>{m}<i/></span>)}</div>)}</div></div>
-    <section id="start" className="selector"><div className="sectionTag">01 / START</div><div><div className="eyebrow">ПЕРВЫЙ ШАГ</div><h2>Что проектируем?</h2><div className="choices"><Link className='choiceButton' href="/brief/apartment"><small>01</small><b>Квартиру</b><span><span className="arrowIcon"></span></span></Link><Link className='choiceButton' href="/brief/house"><small>02</small><b>Дом</b><span><span className="arrowIcon"></span></span></Link></div></div></section>
-    <section id="services" className="services"><div className="sectionTag">02 / SERVICES</div><div><div className="sectionHead"><div><div className="eyebrow">RE:PROJECT SERVICES</div><h2>Выберите<br/><em>задачу.</em></h2></div><p>Начните с AI-визуализации или обратитесь к специалисту за консультацией и полноценным проектированием.</p></div><div className="serviceGrid">{services.map((item)=><ServiceCard service={item} key={item.id}/>)}</div></div></section>
-    <section id="architecture" className="architecturePreview"><div className="sectionTag">03 / ARCHITECTURE</div><div><div className="sectionHead"><div><div className="eyebrow">READY PROJECTS</div><h2>Архитектура<br/><em>от re:project.</em></h2></div><p>Три типовых проекта частных домов — re:project 1—3. Разные планировочные сценарии, единый подход: от архитектуры и конструктивных решений до чистовой отделки и готового интерьера.</p></div><div className="architectureCards">{architectureProjects.map((project)=><Link href={`/projects/${project.id}`} className="architectureCard" key={project.id}>{project.exterior ? <img className="architectureCardImage" src={project.exterior} alt={`${project.title} — визуализация экстерьера`} /> : <HouseVisual variant={project.accent}/>}<span className="cardHover">Смотреть проект <span className="arrowIcon"></span></span><div className="architectureCardInfo"><div><small>{project.number}</small><strong>{project.title}</strong></div><span>{project.area} · {project.floors}</span></div></Link>)}</div><Link className="outline architectureLink" href="/projects">Смотреть все проекты <span className="arrowIcon"></span></Link></div></section>
-    <section id="about" className="about"><div className="sectionTag">04 / AUTHOR</div><div className="aboutGrid"><div className="authorPhotoWrap"><img src="/author.jpg" alt="Архитектор-дизайнер" className="authorPhoto"/><div className="authorCaption">АРХИТЕКТОР / ДИЗАЙНЕР<br/>2018 — NOW</div></div><div><div className="eyebrow">АВТОРСКИЙ ПОДХОД</div><h2>Не только<br/><em>визуализация.</em></h2><p className="lead">Архитектор-дизайнер с 2018 года, специализируюсь на проектировании частных домов и разработке дизайн-проектов интерьеров.</p><p>Веду проекты полного цикла: от концепции и рабочей документации до комплектации объекта, взаимодействия с подрядчиками и авторского надзора.</p><p>Имею опыт проектирования домов по разным технологиям, включая каркасное строительство, клеёный брус и керамические блоки Porotherm. Консультирую по реализуемости дизайн-проектов, помогаю адаптировать их под строительство, бюджет и требования заказчика.</p><p>Собственная бригада позволяет контролировать качество работ на всех этапах.</p><div className="authorTeam"><b>Полный цикл</b><span>собственная бригада · команда проектировщиков</span></div></div></div></section>
-    <section className="educationPreview"><div className="sectionTag">05 / EDUCATION</div><div className="educationPreviewInner"><div><div className="eyebrow">RE:PROJECT EDUCATION</div><h2>Инструменты<br/><em>для дизайнеров.</em></h2></div><div><p>Готовые кейсы, чеклисты, шаблоны и рабочие системы — без уроков и домашней работы. Купили, получили материалы, применили в своём проекте.</p><Link className="outline" href="/education">Смотреть материалы <span className="arrowIcon"></span></Link></div></div></section>
-    <section className="cta"><div className="eyebrow">05 / START</div><h2>Есть фотография?<br/><em>Давайте изменим пространство.</em></h2><Link className="light" href="/service/visual">Начать AI-визуализацию <span className="arrowIcon"></span></Link></section>
-  </main><footer><div><b>re:project</b><p>architecture · interior · technology</p></div><div><small>КОНТАКТЫ</small><a href="mailto:hello@reproject.ru">hello@reproject.ru</a><a href="https://t.me/re_project" target="_blank" rel="noreferrer">@re:project</a></div><div><small>ЮРИДИЧЕСКОЕ</small><a href="/legal/contract">Договор оказания услуг</a><a href="/legal">Политика обработки данных</a></div><p className="copy">© 2026 re:project</p></footer><FloatingCta/></>;
+  const [menu, setMenu] = useState(false);
+  const withImg = architectureProjects.filter((p) => p.exterior);
+
+  return <div className="xPage"><main>
+    <section className="xHero">
+      <picture>
+        <source media="(max-width: 860px)" srcSet="/home/hero-tall.jpg" />
+        <img className="xHeroImg" src="/home/hero-wide.jpg" alt="Одноэтажный дом re:project в тёмной обшивке среди сосен" />
+      </picture>
+      <div className="xHeroShade" />
+
+      <div className="xTop">
+        <Link href="/" className="xBrand"><span className="xMark" aria-hidden="true"><i/><i/><i/><i/></span>re:project</Link>
+        <nav className="xNav">{nav.map((n) => <a key={n.href} href={n.href}>{n.label}</a>)}</nav>
+        <div className="xTopRight">
+          <Link href="/account" className="xPill xPillLight">Личный кабинет</Link><Link href="/account" className="xCircle" aria-label="Личный кабинет"><Arrow/></Link>
+          <button className="xBurger" onClick={() => setMenu(!menu)} aria-label="Меню" aria-expanded={menu}><i/><i/></button>
+        </div>
+        {menu && <div className="xMobileNav">{nav.map((n) => <a key={n.href} href={n.href} onClick={() => setMenu(false)}>{n.label}</a>)}<Link href="/account">Личный кабинет</Link></div>}
+      </div>
+
+      <div className="xHeroBody">
+        <h1>Проектирую дома<br/>и интерьеры, в которых<br/>хочется жить</h1>
+        <div className="xChips">{chips.map((c) => <Link key={c.label} href={c.href} className="xChip">{c.label}</Link>)}</div>
+      </div>
+
+      <div className="xSlider">
+        <div className="xSliderBar"><span>01</span><i><b/></i><span>{String(withImg.length).padStart(2, '0')}</span></div>
+        <div className="xSlides">{withImg.map((p) => <Link key={p.id} href={`/projects/${p.id}`} className="xSlide">
+          <img src={p.exterior} alt={`${p.title} — экстерьер`} />
+          <div><strong>{p.title}</strong><small>{[p.floors, p.area].filter((v) => v && v !== '—').join(' · ') || 'Типовой проект'}</small></div>
+        </Link>)}</div>
+      </div>
+    </section>
+
+    <section id="about" className="xAbout">
+      <div className="xAboutSide">
+        <span className="xIdx">(01)</span><span className="xLabel">О проекте</span>
+        <p className="xSmall">Архитектор-дизайнер с 2018 года. Каркас, клеёный брус, керамика Porotherm. Собственная бригада и команда проектировщиков.</p>
+      </div>
+      <div className="xAboutMain">
+        <p className="xStatement"><b>re:project</b> – авторский сервис, где <b>архитектура</b>, интерьер и <b>искусственный интеллект</b> работают на один результат – <b>дом, который</b> удобно строить и <b>приятно жить</b>.</p>
+        <div className="xStats">
+          <div><b>8</b><span>лет практики</span></div>
+          <div><b>5+</b><span>домов построено по re:project 1</span></div>
+          <div><b>2 000 ₽</b><span>старт работы над пространством</span></div>
+        </div>
+        <div className="xBtnRow"><Link href="/projects" className="xPill xPillGhost">Смотреть проекты</Link><Link href="/projects" className="xCircle" aria-label="Смотреть проекты"><Arrow/></Link></div>
+      </div>
+    </section>
+
+    <section id="services" className="xSection">
+      <div className="xHead"><div><span className="xIdx">(02)</span><span className="xLabel">Услуги</span></div><h2>Выберите <b>задачу</b> – начнём с неё</h2></div>
+      <div className="xServices">{services.map((s) => <Link key={s.id} href={`/service/${s.id}`} className="xService">
+        <div className="xServiceTop"><small>{s.num}</small><span className="xPrice">{s.price}</span></div>
+        <h3>{s.title}</h3><p>{s.text}</p>
+        <span className="xMore">Открыть услугу <Arrow/></span>
+      </Link>)}</div>
+    </section>
+
+    <section id="architecture" className="xSection">
+      <div className="xHead"><div><span className="xIdx">(03)</span><span className="xLabel">Архитектура</span></div><h2>Готовые проекты <b>re:project</b></h2></div>
+      <div className="xProjects">{architectureProjects.map((p) => <Link key={p.id} href={`/projects/${p.id}`} className="xProject">
+        {p.exterior ? <img src={p.exterior} alt={`${p.title} — визуализация экстерьера`} /> : <div className="xProjectEmpty" />}
+        <div className="xProjectInfo"><div><small>{p.typeLabel ?? 'ТИПОВОЙ ПРОЕКТ'}</small><strong>{p.title}</strong></div><Arrow/></div>
+      </Link>)}</div>
+      <div className="xBtnRow"><Link href="/projects" className="xPill xPillGhost">Все проекты</Link><Link href="/projects" className="xCircle" aria-label="Все проекты"><Arrow/></Link></div>
+    </section>
+
+    <section className="xSection xSplit">
+      <div className="xAuthor"><img src="/author.jpg" alt="Архитектор-дизайнер re:project" /></div>
+      <div>
+        <div className="xHead xHeadTight"><div><span className="xIdx">(04)</span><span className="xLabel">Автор</span></div></div>
+        <p className="xStatement xStatementSm">Веду проекты <b>полного цикла</b>: от концепции и рабочей документации до <b>комплектации</b>, работы с подрядчиками и <b>авторского надзора</b>.</p>
+        <p className="xSmall">Консультирую по реализуемости дизайн-проектов и помогаю адаптировать их под строительство, бюджет и требования заказчика.</p>
+      </div>
+    </section>
+
+    <section className="xSection xEdu">
+      <div className="xHead"><div><span className="xIdx">(05)</span><span className="xLabel">Для дизайнеров</span></div><h2>Инструменты, которые <b>работают в проекте</b></h2></div>
+      <div className="xEduRow">
+        <p className="xSmall">Готовые кейсы, чек-листы, шаблоны и рабочие системы – без уроков и домашних заданий. Купили, получили материалы, применили в своём проекте.</p>
+        <div className="xBtnRow"><Link href="/education" className="xPill xPillLight">Смотреть материалы</Link><Link href="/education" className="xCircle" aria-label="Смотреть материалы"><Arrow/></Link></div>
+      </div>
+    </section>
+
+    <section className="xCta">
+      <h2>Есть фотография? <b>Давайте изменим пространство.</b></h2>
+      <div className="xBtnRow"><Link href="/service/visual" className="xPill xPillLight">Начать AI-визуализацию</Link><Link href="/service/visual" className="xCircle" aria-label="Начать AI-визуализацию"><Arrow/></Link></div>
+    </section>
+  </main>
+
+  <footer className="xFooter">
+    <div><b>re:project</b><p>architecture · interior · technology</p></div>
+    <div><small>Контакты</small><a href="mailto:hello@reproject.ru">hello@reproject.ru</a><a href="https://t.me/reprojectarh" target="_blank" rel="noreferrer">Telegram-канал</a></div>
+    <div><small>Юридическое</small><a href="/legal/contract">Договор оказания услуг</a><a href="/legal">Политика обработки данных</a></div>
+    <p className="xCopy">© 2026 re:project</p>
+  </footer>
+  <FloatingCta/></div>;
 }

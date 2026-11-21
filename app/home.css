@@ -1,0 +1,133 @@
+/* re:project – главная: тёмная рамка, фото-карточка, стеклянные элементы. Все селекторы под .xPage, чтобы перебить старые глобальные стили */
+.xPage{--xBg:#1c1b20; --xCard:#26252b; --xLine:rgba(255,255,255,.14); --xGlass:rgba(255,255,255,.14);
+  --xFg:#f4f3f0; --xMuted:#9b9aa1; --xR:22px;
+  background:var(--xBg); color:var(--xFg); min-height:100vh;
+  font-family:var(--font-manrope),'Manrope',Arial,Helvetica,sans-serif; letter-spacing:-.01em;
+  padding:18px clamp(12px,2.2vw,28px) 0;}
+.xPage a{color:inherit}
+.xPage b{font-weight:600}
+.xPage .xPill{display:inline-flex;align-items:center;height:44px;padding:0 22px;border-radius:999px;font-size:13px;font-weight:600;letter-spacing:.02em;text-transform:uppercase;transition:background .25s,color .25s,border-color .25s;white-space:nowrap}
+.xPage .xPillLight{background:#fff;color:#111!important}
+.xPage .xPillLight:hover{background:#e9e7e2}
+.xPage .xPillGhost{border:1px solid rgba(255,255,255,.55);color:var(--xFg)}
+.xPage .xPillGhost:hover{background:#fff;color:#111!important}
+.xPage .xCircle{width:44px;height:44px;border-radius:50%;background:#fff;color:#111!important;display:inline-flex;align-items:center;justify-content:center;flex:none;transition:transform .3s cubic-bezier(.22,1,.36,1)}
+.xPage .xBtnRow{display:flex;align-items:center;gap:6px}
+.xPage .xBtnRow:hover .xCircle{transform:rotate(45deg)}
+.xPage .xArrow{display:inline-flex}
+.xPage :focus-visible{outline:2px solid #fff;outline-offset:3px}
+.xPage .xHero{position:relative;border-radius:var(--xR);overflow:hidden;min-height:min(760px,calc(100vh - 36px));display:flex;flex-direction:column;padding:22px clamp(18px,2.6vw,34px) 28px;isolation:isolate}
+.xPage .xHeroImg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transform:scale(1.04);animation:xZoom 2.4s cubic-bezier(.22,1,.36,1) forwards}
+.xPage .xHeroShade{position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(20,20,24,.5) 0%,rgba(20,20,24,.32) 30%,rgba(20,20,24,.12) 55%,rgba(20,20,24,.6) 100%)}
+@keyframes xZoom{to{transform:scale(1)}}
+.xPage .xTop{display:flex;align-items:center;justify-content:space-between;gap:16px;position:relative}
+.xPage .xBrand{display:flex;align-items:center;gap:10px;font-size:15px;font-weight:500;color:#fff!important}
+.xPage .xMark{width:30px;height:30px;border-radius:7px;background:#fff;display:grid;grid-template-columns:1fr 1fr;gap:3px;padding:6px}
+.xPage .xMark i{background:#1c1b20;border-radius:50% 50% 50% 0}
+.xPage .xMark i:nth-child(2){border-radius:50% 50% 0 50%}
+.xPage .xMark i:nth-child(3){border-radius:50% 0 50% 50%}
+.xPage .xMark i:nth-child(4){border-radius:0 50% 50% 50%}
+.xPage .xNav{display:flex;background:var(--xGlass);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:4px}
+.xPage .xNav a{font-size:13px;color:#fff!important;padding:9px 18px;border-radius:999px;transition:background .2s}
+.xPage .xNav a+a{box-shadow:-1px 0 0 rgba(255,255,255,.22)}
+.xPage .xNav a:hover{background:rgba(255,255,255,.16)}
+.xPage .xTopRight{display:flex;align-items:center;gap:6px}
+.xPage .xBurger{display:none;width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.5);background:var(--xGlass);backdrop-filter:blur(12px);flex-direction:column;justify-content:center;align-items:center;gap:5px;cursor:pointer}
+.xPage .xBurger i{display:block;width:16px;height:1.5px;background:#fff}
+.xPage .xMobileNav{position:absolute;top:56px;right:0;left:0;background:rgba(28,27,32,.92);backdrop-filter:blur(16px);border-radius:18px;padding:10px;display:flex;flex-direction:column;z-index:5}
+.xPage .xMobileNav a{padding:14px 12px;font-size:16px;color:#fff!important;border-radius:12px}
+.xPage .xMobileNav a:hover{background:rgba(255,255,255,.08)}
+.xPage .xHeroBody{margin-top:clamp(48px,9vh,110px);max-width:760px}
+.xPage .xHero h1{font-size:clamp(34px,4.6vw,62px);font-weight:400;line-height:1.08;letter-spacing:-.035em;margin:0 0 34px;color:#fff;text-wrap:balance;animation:xUp 1.1s cubic-bezier(.22,1,.36,1) .15s both}
+.xPage .xChips{display:flex;flex-wrap:wrap;gap:10px;max-width:620px;animation:xUp 1.1s cubic-bezier(.22,1,.36,1) .35s both}
+.xPage .xChip{font-size:13px;color:#fff!important;padding:8px 16px;border-radius:999px;border:1px solid rgba(255,255,255,.6);background:rgba(255,255,255,.06);backdrop-filter:blur(6px);transition:background .2s,color .2s}
+.xPage .xChip:hover{background:#fff;color:#111!important}
+@keyframes xUp{from{opacity:0;transform:translateY(24px)}}
+.xPage .xSlider{position:absolute;right:clamp(18px,2.6vw,34px);bottom:28px;width:min(560px,46%);animation:xUp 1.1s cubic-bezier(.22,1,.36,1) .55s both}
+.xPage .xSliderBar{display:flex;align-items:center;gap:12px;font-size:11px;color:#fff;margin-bottom:12px}
+.xPage .xSliderBar i{flex:1;height:2px;background:rgba(255,255,255,.35);border-radius:2px;position:relative;overflow:hidden}
+.xPage .xSliderBar b{position:absolute;inset:0 auto 0 0;width:34%;background:#fff}
+.xPage .xSlides{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding-bottom:2px}
+.xPage .xSlides::-webkit-scrollbar{display:none}
+.xPage .xSlide{flex:0 0 260px;scroll-snap-align:start;display:flex;gap:12px;padding:10px;border-radius:14px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);transition:background .25s}
+.xPage .xSlide:hover{background:rgba(255,255,255,.22)}
+.xPage .xSlide img{width:84px;height:70px;object-fit:cover;border-radius:8px;flex:none}
+.xPage .xSlide div{display:flex;flex-direction:column;justify-content:space-between;min-width:0}
+.xPage .xSlide strong{font-size:15px;font-weight:500;color:#fff}
+.xPage .xSlide small{font-size:11px;color:rgba(255,255,255,.75)}
+.xPage .xAbout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.5fr);gap:6vw;padding:110px clamp(8px,2.6vw,34px) 100px}
+.xPage .xAboutSide{display:flex;flex-direction:column;gap:4px}
+.xPage .xIdx{font-size:11px;color:var(--xMuted);display:block}
+.xPage .xLabel{font-size:13px;font-weight:600;display:block}
+.xPage .xSmall{font-size:13px;line-height:1.7;color:var(--xMuted);max-width:340px;margin:auto 0 0}
+.xPage .xAboutSide .xSmall{padding-top:80px}
+.xPage .xStatement{font-size:clamp(24px,2.6vw,36px);line-height:1.3;font-weight:300;color:#c9c8cc;letter-spacing:-.02em;margin:0 0 40px;text-wrap:pretty}
+.xPage .xStatement b{color:#fff;font-weight:600}
+.xPage .xStatementSm{font-size:clamp(22px,2.2vw,30px)}
+.xPage .xStats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-bottom:40px}
+.xPage .xStats div{border-top:1px solid var(--xLine);padding-top:16px}
+.xPage .xStats b{display:block;font-size:clamp(26px,2.6vw,36px);font-weight:500;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.xPage .xStats span{font-size:12px;color:var(--xMuted)}
+.xPage .xSection{padding:90px clamp(8px,2.6vw,34px);border-top:1px solid var(--xLine)}
+.xPage .xHead{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.5fr);gap:6vw;align-items:end;margin-bottom:46px}
+.xPage .xHeadTight{display:block;margin-bottom:30px}
+.xPage .xSection h2,.xPage .xCta h2{font-size:clamp(30px,3.6vw,52px);font-weight:300;line-height:1.08;letter-spacing:-.035em;margin:0;color:#c9c8cc;text-wrap:balance}
+.xPage .xSection h2 b,.xPage .xCta h2 b{color:#fff;font-weight:600}
+.xPage .xServices{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.xPage .xService{background:var(--xCard);border-radius:var(--xR);padding:24px 22px 22px;display:flex;flex-direction:column;min-height:330px;border:1px solid transparent;transition:border-color .25s,transform .35s cubic-bezier(.22,1,.36,1)}
+.xPage .xService:hover{border-color:rgba(255,255,255,.3);transform:translateY(-4px)}
+.xPage .xServiceTop{display:flex;justify-content:space-between;align-items:center}
+.xPage .xServiceTop small{font-size:11px;color:var(--xMuted)}
+.xPage .xPrice{font-size:12px;font-weight:600;padding:6px 12px;border-radius:999px;border:1px solid var(--xLine)}
+.xPage .xService h3{font-size:21px;font-weight:500;line-height:1.2;letter-spacing:-.02em;margin:46px 0 12px}
+.xPage .xService p{font-size:13px;line-height:1.6;color:var(--xMuted);margin:0 0 20px}
+.xPage .xMore{margin-top:auto;display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:600;letter-spacing:.02em;text-transform:uppercase}
+.xPage .xProjects{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-bottom:30px}
+.xPage .xProject{position:relative;border-radius:var(--xR);overflow:hidden;aspect-ratio:4/3.4;background:var(--xCard);display:block}
+.xPage .xProject img{width:100%;height:100%;object-fit:cover;transition:transform 1s cubic-bezier(.22,1,.36,1)}
+.xPage .xProject:hover img{transform:scale(1.05)}
+.xPage .xProjectEmpty{width:100%;height:100%}
+.xPage .xProjectInfo{position:absolute;left:12px;right:12px;bottom:12px;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 16px;border-radius:14px;background:rgba(28,27,32,.42);border:1px solid rgba(255,255,255,.2);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);color:#fff}
+.xPage .xProjectInfo small{display:block;font-size:10px;letter-spacing:.08em;color:rgba(255,255,255,.7)}
+.xPage .xProjectInfo strong{font-size:18px;font-weight:500}
+.xPage .xSplit{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.5fr);gap:6vw;align-items:center}
+.xPage .xAuthor{border-radius:var(--xR);overflow:hidden;aspect-ratio:671/722;max-width:440px}
+.xPage .xAuthor img{width:100%;height:100%;object-fit:cover;filter:grayscale(.2)}
+.xPage .xEduRow{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.5fr);gap:6vw;align-items:center}
+.xPage .xEduRow .xSmall{margin:0}
+.xPage .xCta{margin:20px 0 0;border-radius:var(--xR);background:#f4f3f0;color:#111;padding:clamp(48px,7vw,96px) clamp(22px,4vw,56px);display:flex;flex-direction:column;gap:36px}
+.xPage .xCta h2{color:#77767c;max-width:900px}
+.xPage .xCta h2 b{color:#111}
+.xPage .xCta .xPillLight{background:#111;color:#fff!important}
+.xPage .xCta .xCircle{background:#111;color:#fff!important}
+.xPage .xFooter{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;padding:56px clamp(8px,2.6vw,34px) 26px;color:var(--xFg)}
+.xPage .xFooter b{font-size:16px;font-weight:600}
+.xPage .xFooter p,.xPage .xFooter a{display:block;color:var(--xMuted)!important;font-size:13px;line-height:1.9;margin:0}
+.xPage .xFooter a:hover{color:#fff!important}
+.xPage .xFooter small{display:block;font-size:11px;color:#6d6c72;margin-bottom:8px;text-transform:uppercase;letter-spacing:.1em}
+.xPage .xCopy{grid-column:1/-1;border-top:1px solid var(--xLine);padding-top:20px!important;font-size:12px!important}
+@media (max-width:1100px){
+  .xPage .xServices{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .xPage .xSlider{position:relative;right:auto;bottom:auto;width:100%;margin-top:34px}
+  .xPage .xHero{min-height:auto}
+}
+@media (max-width:860px){
+  .xPage .xNav,.xPage .xTopRight .xPillLight,.xPage .xTopRight .xCircle{display:none}
+  .xPage .xBurger{display:inline-flex}
+  .xPage .xAbout,.xPage .xHead,.xPage .xSplit,.xPage .xEduRow{grid-template-columns:minmax(0,1fr);gap:28px}
+  .xPage .xAboutSide .xSmall{padding-top:20px}
+  .xPage .xProjects{grid-template-columns:minmax(0,1fr)}
+  .xPage .xFooter{grid-template-columns:minmax(0,1fr)}
+  .xPage .xHeroBody{margin-top:56px}
+  .xPage .xSlider{margin-top:auto;padding-top:260px}
+  .xPage .xHero{min-height:min(820px,calc(100vh - 36px))}
+}
+@media (max-width:560px){
+  .xPage .xServices{grid-template-columns:minmax(0,1fr)}
+  .xPage .xStats{grid-template-columns:minmax(0,1fr);gap:0}
+  .xPage .xStats div{padding:14px 0}
+  .xPage .xSlide{flex-basis:230px}
+}
+@media (prefers-reduced-motion:reduce){
+  .xPage *{animation:none!important;transition:none!important}
+}
