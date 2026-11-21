@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { services } from '@/lib/services';
 import { architectureProjects } from '@/lib/projects';
+import { educationProducts } from '@/lib/education';
 import FloatingCta from '@/components/FloatingCta';
 import './home.css';
 
@@ -105,11 +106,13 @@ export default function Home() {
     </section>
 
     <section className="xSection xEdu">
-      <div className="xHead"><div><span className="xIdx">(05)</span><span className="xLabel">Для дизайнеров</span></div><h2>Инструменты, которые <b>работают в проекте</b></h2></div>
-      <div className="xEduRow">
-        <p className="xSmall">Готовые кейсы, чек-листы, шаблоны и рабочие системы – без уроков и домашних заданий. Купили, получили материалы, применили в своём проекте.</p>
-        <div className="xBtnRow"><Link href="/education" className="xPill xPillLight">Смотреть материалы</Link><Link href="/education" className="xCircle" aria-label="Смотреть материалы"><Arrow/></Link></div>
-      </div>
+      <div className="xHead"><div><span className="xIdx">(05)</span><span className="xLabel">Для дизайнеров</span></div><div><h2 className="xBig">Инструменты, которые <b>работают в проекте</b></h2><p className="xSmall xLead">Готовые кейсы, чек-листы, шаблоны и рабочие системы – без уроков и домашних заданий. Купили, получили материалы, применили в своём проекте.</p></div></div>
+      <div className="xEduGrid">{educationProducts.map((e) => <Link key={e.slug} href={`/education/${e.slug}`} className="xEduCard">
+        <div className="xServiceTop"><small>{e.num} · {e.category}</small><span className="xPrice">{e.price}</span></div>
+        <h3>{e.title}</h3>
+        <span className="xMore">Открыть <Arrow/></span>
+      </Link>)}</div>
+      <div className="xBtnRow"><Link href="/education" className="xPill xPillLight">Все материалы</Link><Link href="/education" className="xCircle" aria-label="Все материалы"><Arrow/></Link></div>
     </section>
 
     <section className="xCta">

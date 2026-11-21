@@ -49,7 +49,7 @@ export default function Motion() {
 
     /* ---------- reveal on scroll ---------- */
     const targets = Array.from(document.querySelectorAll<HTMLElement>(REVEAL)).filter(
-      (el) => !el.closest('.hero') && !el.closest('.xHero') && !el.closest('.projectsHero') && !el.closest('.projectDetailHero') && !el.classList.contains('rv'),
+      (el) => !el.closest('.hero') && !el.closest('.xPage') && !el.closest('.projectsHero') && !el.closest('.projectDetailHero') && !el.classList.contains('rv'),
     );
     let io: IntersectionObserver | null = null;
     if (!reduce && 'IntersectionObserver' in window) {
